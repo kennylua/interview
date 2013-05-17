@@ -72,7 +72,7 @@ void DoMerge( int *pIn, int nP, int nQ, int nR)
 {
 	int nLeft = nQ - nP + 1;
 	int nRight = nR - nQ;
-    int i,j,k;
+    int j,k;
 
 	int *pLeft = new int[nLeft];
 	int *pRight = new int[nRight];
