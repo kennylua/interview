@@ -18,6 +18,9 @@ public:
 	Node *NthToLast( int nth );
     Node *FindBegining();
 
+	// leetcode
+	void CreateCyclicList( int *f_pData );
+
 };
 
 #endif

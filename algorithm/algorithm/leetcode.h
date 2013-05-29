@@ -5,5 +5,6 @@
 #include <string>
 
 std::string LongestPalindromeDP(std::string f_inStr );
+bool IsAMatch( const char *f_pstrSrc, const char *f_pstrPattern );
 
 #endif

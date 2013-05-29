@@ -174,3 +174,45 @@ Node *MyList::FindBegining()
 
 	return pSlow;
 }
+
+void MyList::CreateCyclicList( int *f_pData )
+{
+	int   nIter    = 0; 
+	Node *pNewNode = NULL;
+	Node *pCurNode = NULL;
+	Node *pPreNode = NULL;
+
+	if( NULL == f_pData )
+	{
+		return;
+	}
+
+	for( nIter = 0; nIter < ( sizeof( f_pData ) / sizeof( f_pData[0] ) ); nIter++ )
+	{
+		pNewNode = new Node;
+		pNewNode->nData = f_pData[nIter ];
+		pNewNode->pNext = NULL;
+
+		if( mProot == NULL )
+		{
+			mProot = pNewNode;
+			pNewNode->pNext = pNewNode;
+		}
+		else
+		{
+			pCurNode = mProot;
+			pPreNode = NULL;
+			do
+			{
+				pPreNode = pCurNode;
+				pCurNode = pCurNode->pNext;
+				if( pPreNode->nData <= pNewNode->nData && pCurNode->nData >= pNewNode->nData  ) break;
+				if( ( pPreNode->nData > pCurNode->nData ) && ( pPreNode->nData > pNewNode->nData || pCurNode->nData < pNewNode->nData ) ) break;
+			} while( pCurNode != mProot );
+		}
+
+		pPreNode->pNext = pNewNode;
+		pNewNode->pNext = pCurNode;
+	}
+
+}
